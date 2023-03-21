@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 5 Leaflet</title>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    </head>
+    <body>
+    <div id="mapid" style = "height: 500px"></div>
+    <script>
+        var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+        tileSize: 512,
+        maxZoom: 18,
+        zoomOffset: -1,
+        id: 'mapbox/streets-v12',
+        accessToken: 'pk.eyJ1Ijoia2F0ZS1vbHZlcmEiLCJhIjoiY2xmaW51aWd1MHVwNzN6cXdhbjE1bHZidyJ9.7r7uFcYC0Jobf8jRW8pLBw'
+        }).addTo(mymap);
+
+        var marker = L.marker([51.5, -0.09]).addTo(mymap);
+
+        var circle = L.circle([51.508,-0.11], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(mymap);
+
+        var polygon = L.polygon([
+        [51.509, -0.08],
+        [51.503, -0.06],
+        [51.51, -0.047]
+        ]).addTo(mymap);
+
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+        circle.bindPopup("I am a circle.");
+        polygon.bindPopup("I am a polygon");
+
+        function onMapClick(e) {
+            alert("You clicked the map at " + e.latlng);
+        }
+
+        mymap.on('click', onMapClick);
+
+        //mymap.locate({setView: true, maxZoom: 16});
+    </script>
+    </body>
+    </html>
