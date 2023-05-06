@@ -1,13 +1,13 @@
 function Run () {
 
     console.log(theJSON) ;
-    var coordinates = theJSON.data;
+    coordinates = theJSON.data
+
     var TopLeft = MaxLatMinLong (coordinates) ;
     var TopRight = MaxLatMaxLong (coordinates) ;
     var BottomLeft = MinLatMinLong (coordinates) ;
     var BottomRight = MinLatMaxLong (coordinates) ;
     var BoundingBox =
-
     {
         TopLeft: TopLeft,
         TopRight: TopRight,
