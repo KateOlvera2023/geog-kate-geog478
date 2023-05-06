@@ -9,10 +9,10 @@ function Run () {
     var BottomRight = MinLatMaxLong (coordinates) ;
     var BoundingBox =
     {
-        TopLeft: TopLeft,
-        TopRight: TopRight,
-        bottomLeft: BottomLeft,
-        bottomRight: BottomRight,
+        topLeft: findTopLeft,
+        topRight: findTopRight,
+        bottomLeft: findBottomLeft,
+        bottomRight: findBottomRight,
 
     }
 
@@ -22,71 +22,71 @@ function Run () {
 }
 
 function MaxLatMinLong(PointsList) {
-    var TopLeft;
+    var findTopLeft;
     PointsList.forEach(element =>
         {
-            if (TopLeft == null) {
-                TopLeft = element;
+            if (findTopLeft == null) {
+                findTopLeft = element;
 
             }
 
             else {
                 if (element.lat <TopLeft.lat && element.lon> TopLeft.lon) {
-                    TopLeft = element
+                    findTopLeft = element
                 }
             }
         }
         );
-        return TopLeft;
+        return findTopLeft;
 }
 
 function MaxLatMaxLong (PointsList) {
-    var TopRight;
+    var findTopRight;
     PointsList.forEach (element =>
         {
-            if (TopRight == null) {
-                TopRight = element;
+            if (findTopRight == null) {
+                findTopRight = element;
             }
             else {
                 if (element.lat <TopRight.lat && element.lon> TopRight.lon) {
-                    TopRight = element
+                    findTopRight = element
                 }
             }
         }
     );
-    return TopRight;
+    return findTopRight;
 }
 
 function MinLatMinLong (PointsList) {
-    var BottomLeft;
+    var findBottomLeft;
     PointsList.forEach(element =>
     {
-        if (BottomLeft == null) {
-            BottomLeft = element;
+        if (findBottomLeft == null) {
+            findBottomLeft = element;
         }
         else {
             if (element.lat <BottomLeft.lat && element.lon> BottomLeft.lon) {
-                BottomLeft = element
+                findBottomLeft = element
             }
         }
     }
     );
-    returnBottomLeft;
+    return findBottomLeft;
 }
 
 function MinLatMaxLong (PointsList) {
-    var BottomRight;
+    var findBottomRight;
     PointsList.forEach(element =>
         {
-            if (BottomRight == null) {
-                BottomRight = element;
+            if (findBottomRight == null) {
+                findBottomRight = element;
             }
             else {
                 if (element.lat <BottomRight.lat && element.lon> BottomRight.lon) {
-                    BottomRight =element
+                    findBottomRight =element
                 }
             }
         }
         );
-        return BottomRight; 
+        return findBottomRight; 
 }
